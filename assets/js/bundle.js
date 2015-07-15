@@ -23607,14 +23607,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        React.createElement("head", null, 
 	          React.createElement("title", null, this.props.title)
 	        ), 
-	        React.createElement("body", {className: "p2"}, 
+	        React.createElement("body", {className: ""}, 
 	          React.createElement(Header, React.__spread({},  this.props)), 
 	          React.createElement(RouteHandler, React.__spread({},  this.props)), 
 	          React.createElement("script", {
 	            id: "initial-props", 
 	            type: "application/json", 
 	            dangerouslySetInnerHTML: initialProps}), 
-	          React.createElement("script", {src: "/bundle.js"})
+	          React.createElement("script", {src: "/assets/js/bundle.js"})
 	        )
 	      )
 	    )
@@ -23642,9 +23642,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Header = React.createClass({displayName: "Header",
 	  render: function() {
 	    return (
-	      React.createElement("header", {className: "py2"}, 
-	        React.createElement("h1", {className: "mt0"}, this.props.title), 
-	        React.createElement("div", {className: "mxn2"}, 
+	      React.createElement("header", null, 
+	        React.createElement("h1", null, this.props.title), 
+	        React.createElement("div", {className: " "}, 
 	          React.createElement(Link, {to: "/", className: "button button-transparent"}, "Index"), 
 	          React.createElement(Link, {to: "/about/", className: "button button-transparent"}, "About")
 	        )

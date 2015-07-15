@@ -5,7 +5,7 @@ module.exports = {
   entry: './entry.js',
 
   output: {
-    filename: 'bundle.js',
+    filename: './assets/js/bundle.js',
     path: __dirname,
     libraryTarget: 'umd'
   },
@@ -17,6 +17,6 @@ module.exports = {
   },
 
   plugins: [
-    new StaticSiteGeneratorPlugin('bundle.js', data.routes, data)
+    new StaticSiteGeneratorPlugin('./assets/js/bundle.js', data.routes, data)
   ]
 }

@@ -16,14 +16,14 @@ var Root = React.createClass({
         <head>
           <title>{this.props.title}</title>
         </head>
-        <body className="p2">
+        <body className="">
           <Header {...this.props} />
           <RouteHandler {...this.props} />
           <script
             id="initial-props"
             type="application/json"
             dangerouslySetInnerHTML={initialProps} />
-          <script src="/bundle.js" />
+          <script src="/assets/js/bundle.js" />
         </body>
       </html>
     )
