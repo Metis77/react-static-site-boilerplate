@@ -17,7 +17,7 @@ var dist  = './dist/';
 // The development server (the recommended option for development)
 // gulp.task("default", ["watch"]);
 gulp.task('default', function() {
-    gulp.start('watch');
+	gulp.start('sass', 'webpack:build-dev', 'watch');
 });
 
 
