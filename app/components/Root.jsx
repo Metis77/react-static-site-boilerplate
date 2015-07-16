@@ -1,4 +1,5 @@
 
+
 var React = require('react')
 var Router = require('react-router')
 var RouteHandler = Router.RouteHandler
@@ -15,6 +16,7 @@ var Root = React.createClass({
       <html>
         <head>
           <title>{this.props.title}</title>
+          <link href="/assets/css/main.css" rel="stylesheet" />
         </head>
         <body className="">
           <Header {...this.props} />
