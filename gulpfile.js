@@ -14,10 +14,14 @@ var app   = './app/';
 var dist  = './dist/';
 
 
-// The development server (the recommended option for development)
-// gulp.task("default", ["watch"]);
+/*
+ * generic tasks
+ */
 gulp.task('default', function() {
 	gulp.start('sass', 'webpack:build-dev', 'serve');
+});
+gulp.task('prod', function() {
+	gulp.start('sass', 'webpack:build');
 });
 
 
@@ -28,7 +32,11 @@ gulp.task('default', function() {
 gulp.task('sass', function () {
     return gulp.src(app + 'styles/main.scss')
         .pipe(sourcemaps.init())
-            .pipe(sass())
+            .pipe(sass(
+            	{
+            		outputStyle: 'compressed'
+            	}
+            ))
         .pipe(sourcemaps.write())
         .pipe(sourcemaps.init({loadMaps: true}))
             .pipe(autoprefixer(
