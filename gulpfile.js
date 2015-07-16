@@ -1,14 +1,14 @@
 var gulp    		= require("gulp");
 var gutil 			= require("gulp-util");
+
 var webpack 		= require("webpack");
-var WebpackDevServer = require("webpack-dev-server");
 var webpackConfig 	= require("./webpack.config.js");
 
 var sass 			= require('gulp-sass');
 var sourcemaps 		= require('gulp-sourcemaps');
 var autoprefixer 	= require('gulp-autoprefixer');
 
-var livereload    	= require('gulp-livereload');
+var browserSync = require('browser-sync').create();
 
 var app   = './app/';
 var dist  = './dist/';
@@ -17,7 +17,7 @@ var dist  = './dist/';
 // The development server (the recommended option for development)
 // gulp.task("default", ["watch"]);
 gulp.task('default', function() {
-	gulp.start('sass', 'webpack:build-dev', 'watch');
+	gulp.start('sass', 'webpack:build-dev', 'serve');
 });
 
 
@@ -48,7 +48,7 @@ gulp.task('sass', function () {
             ))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(dist + 'assets/css/'))
-        .pipe(livereload());
+        .pipe(browserSync.stream());
 });
 
 
@@ -110,7 +110,7 @@ gulp.task("webpack:build-dev", function(callback) {
 		gutil.log("[webpack:build-dev]", stats.toString({
 			colors: true
 		}));
-		callback( livereload.reload() );
+		callback( browserSync.reload() );
 	});
 
 });
@@ -128,9 +128,26 @@ gulp.task("webpack:build-dev", function(callback) {
  *  WATCH
  */
 gulp.task('watch', function() {
-  livereload.listen();
+
   gulp.watch(app + 'styles/main.scss', ['sass']);
   gulp.watch(["app/**/*"], ["webpack:build-dev"]);
+});
+
+
+
+
+// Static Server + watching scss/html files
+gulp.task('serve', ['sass'], function() {
+
+    browserSync.init({
+        server: "./dist",
+        open: false,
+        reloadOnRestart: true,
+        notify: false
+    });
+
+    gulp.watch(app + 'styles/**/*', ['sass']);
+    gulp.watch([app + '**/*', !app + 'styles/**/*' ], ["webpack:build-dev"]);
 });
 
 
