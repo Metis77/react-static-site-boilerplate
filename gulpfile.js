@@ -20,7 +20,7 @@ var dist  = './dist/';
 gulp.task('default', function() {
 	gulp.start('sass', 'webpack:build-dev', 'serve');
 });
-gulp.task('prod', function() {
+gulp.task('production', function() {
 	gulp.start('sass', 'webpack:build');
 });
 
