@@ -5,7 +5,7 @@ var Index = React.createClass({
   render: function() {
     return (
       <main>
-        Index component 2
+        Index component 8
       </main>
     )
   }
