@@ -6,8 +6,16 @@ module.exports = {
 
   output: {
     filename: './assets/js/bundle.js',
-    path: __dirname+'/dist',
+    path: __dirname+'app',
     libraryTarget: 'umd'
+  },
+
+  devServer: {
+        contentBase: "./dist",
+        // noInfo: true, //  --no-info option
+        // quiet: false,
+        hot: true,
+        //inline: true
   },
 
   module: {

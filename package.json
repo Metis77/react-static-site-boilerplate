@@ -6,7 +6,8 @@
   "scripts": {
     "webpack": "webpack --progress --colors",
     "dev": "webpack-dev-server --progress --colors",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "test": "gulp prod && webpack-dev-server --progress --colors"
   },
   "author": "Brent Jackson",
   "license": "MIT",

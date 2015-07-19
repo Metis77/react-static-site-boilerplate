@@ -18,9 +18,9 @@ var dist  = './dist/';
  * generic tasks
  */
 gulp.task('default', function() {
-	gulp.start('sass', 'webpack:build-dev', 'serve');
+	gulp.start('serve');
 });
-gulp.task('prod', function() {
+gulp.task('production', function() {
 	gulp.start('sass', 'webpack:build');
 });
 
@@ -133,29 +133,25 @@ gulp.task("webpack:build-dev", function(callback) {
 
 
 /**
- *  WATCH
+ *  browserSync
  */
-gulp.task('watch', function() {
-
-  gulp.watch(app + 'styles/main.scss', ['sass']);
-  gulp.watch(["app/**/*"], ["webpack:build-dev"]);
-});
-
-
-
 
 // Static Server + watching scss/html files
 gulp.task('serve', ['sass'], function() {
 
     browserSync.init({
-        server: "./dist",
+        // server: "./dist",
+        proxy: "localhost:8080",
         open: false,
         reloadOnRestart: true,
-        notify: false
+        notify: false,
+        reloadDelay: 1000, // wait for webpack-dev-server
+
     });
 
     gulp.watch(app + 'styles/**/*', ['sass']);
-    gulp.watch([app + '**/*', !app + 'styles/**/*' ], ["webpack:build-dev"]);
+    gulp.watch([app+'**/*','!'+app+'styles/**/*'])
+        .on('change', browserSync.reload);
 });
 
 
